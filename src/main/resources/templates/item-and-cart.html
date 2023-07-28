@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <h1>商品一覧</h1>
+        <p th:each="item, status: ${application.itemList}">
+            <span th:text="${item.name}">name</span> 
+            <span th:text="${#numbers.formatInteger(item.price, 2, 'COMMA')}">price</span>円 
+            <a href="item-and-cart.html" th:href="@{/exam06/inCart(index=${status.index})}">カートへ</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>ショッピングカート</h2>
+        <p th:each="item, status: ${session.cartList}">
+            <span th:text="${item.name}">name</span> 
+            <span th:text="${#numbers.formatInteger(item.price, 2, 'COMMA')}">price</span>円 
+            <a href="item-and-cart.html" th:href="@{/exam06/delete(index=${status.index})}">削除</a>
+        </p>
+    </section>
+
+    <section>
+        <p>合計 <span th:text="${sumPrice}">sumPrice</span>円</p>
+    </section>
+</body>
+
+</html>
