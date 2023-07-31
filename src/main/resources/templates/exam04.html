@@ -8,8 +8,11 @@
 <body>
     <h1>ユーザ登録</h1>
     <form action="exam04-result.html" th:action="@{/exam04/showProfile}" method="post" th:object="${userForm}">
+        <div th:errors="*{name}" style="color:red">エラー!</div>
         <label for="name">名前：<input type="text" name="name" id="name" th:field="*{name}"></label><br>
+        <div th:errors="*{age}" style="color:red">エラー!</div>
         <label for="age">年齢：<input type="number" name="age" id="age" th:field="*{age}"></label><br>
+        <div th:errors="*{comment}" style="color:red">エラー!</div>
         <label for="comment">コメント：<br>
             <textarea name="comment" id="comment" cols="30" rows="10" th:field="*{comment}"></textarea>
         </label><br>
